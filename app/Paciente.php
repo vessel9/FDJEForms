@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pacientes extends Model
+class Paciente extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
+    //protected $table = 'pacientes';
     protected $fillable = [
+        'id',
         'cedula',
         'nombres',
         'apellidos',
@@ -17,6 +17,7 @@ class Pacientes extends Model
         'lugar_nacimiento',
         'fecha_diagnostico_diabetes',
         'celular',
+        'telefono_convencional',
         'valor_hemoglobina',
         'veces_mide_glucosa',
         'tiene_registro_glucosa',
@@ -28,9 +29,9 @@ class Pacientes extends Model
         'mas_baja_hipoglucemia',
         'administra_hipoglucemia',
         'tiene_convulsiones',
-        'nombres_Medico',
+        'nombres_medico',
         'fecha_ultima_cita',
-        'hospital',
+        'nombre_hospital',
         'cedula_representante',
         'nombres_representante',
         'celular_representante',
@@ -43,42 +44,43 @@ class Pacientes extends Model
         'tipo_vivienda',
         'personas_aportan_familia',
         'situacion_jefe_hogar',
-        'problemas_diabetes'
+        'problemas_diabetes',
+        'id_ciudad',
+        'id_diabetes',
+        'id_insulina_basals',
+        'id_insulina_prandials',
+        'id_tipo_hospital',
+        'id_ayuda_fundacion'
     ];
 
     //Relación 1 - N (inversa)
     public function ciudad()
     {
-        return $this->belongsTo('App\Models\Ciudad');
+        return $this->belongsTo('App\Ciudad');
     }
 
     public function diabetes()
     {
-        return $this->belongsTo('App\Models\Diabetes');
-    }
-
-    public function diabetes_problema()
-    {
-        return $this->belongsTo('App\Models\ProblemaDiabetes');
+        return $this->belongsTo('App\Diabetes');
     }
 
     public function insulina_basal()
     {
-        return $this->belongsTo('App\Models\Insulina_Basal');
+        return $this->belongsTo('App\InsulinaBasal');
     }
 
     public function insulina_pradial()
     {
-        return $this->belongsTo('App\Models\Insulina_Prandial');
+        return $this->belongsTo('App\InsulinaPrandial');
     }
 
     public function tipo_hospital()
     {
-        return $this->belongsTo('App\Models\TipoHospitales');
+        return $this->belongsTo('App\TipoHospital');
     }
 
     public function ayudas_fundacion()
     {
-        return $this->belongsTo('App\Models\Ayudas_Fundacion');
+        return $this->belongsTo('App\AyudaFundacion');
     }
 }

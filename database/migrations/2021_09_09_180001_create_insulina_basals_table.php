@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInsulinasPrandialTable extends Migration
+class CreateInsulinaBasalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInsulinasPrandialTable extends Migration
      */
     public function up()
     {
-        Schema::create('insulina_prandials', function (Blueprint $table) {
+        Schema::create('insulina_basals', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 30);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateInsulinasPrandialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insulina_prandials');
+        Schema::dropIfExists('insulina_basals');
     }
 }

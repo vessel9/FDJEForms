@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Provincia extends Model
 {
-    use HasFactory;
     protected $fillable = [
         'nombre'
     ];
@@ -15,6 +13,6 @@ class Provincia extends Model
     //Relación 1 - N
     public function ciudad()
     {
-        return $this->hasMany('App\Models\Ciudad');
+        return $this->hasMany('App\Ciudad');
     }
 }

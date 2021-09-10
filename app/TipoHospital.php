@@ -4,16 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProblemaDiabetes extends Model
+class TipoHospital extends Model
 {
-    use HasFactory;
     protected $fillable = [
-        'problema',
+        'tipo_hospital',
     ];
 
     //Relación 1 - N
     public function paciente()
     {
-        return $this->hasMany('App\Models\Paciente');
+        return $this->hasMany('App\Paciente');
     }
 }

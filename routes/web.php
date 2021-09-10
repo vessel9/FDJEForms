@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('/')->group(function () {
+    Route::resource('/formulario','FormularioRegistroController');
+    //Route::get('formulario', 'FormularioRegistroController@store')->name('home');
+    //Route::get('crearformulario', 'FormularioRegistroController@create')->name('home');
+    //Route::post('enviarformulario', 'FormularioRegistroController@store')->name('home');
+    //Route::get('editarformulario/{id}', 'FormularioRegistroController@edit')->name('home');
+    //Route::put('editarformulario/{id}', 'FormularioRegistroController@update')->name('home');
+});

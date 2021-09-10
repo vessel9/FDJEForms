@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Diabetes extends Model
+class AyudaFundacion extends Model
 {
     protected $fillable = [
-        'tipo_diabetes',
+        'tipo_ayuda'
     ];
 
-    //Relación 1 - N
+    //Relación N - N
     public function paciente()
     {
-        return $this->hasMany('App\Paciente');
+        return $this->belongsToMany('App/Paciente');
     }
 }
