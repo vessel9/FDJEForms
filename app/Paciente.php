@@ -19,6 +19,7 @@ class Paciente extends Model
         'celular',
         'telefono_convencional',
         'valor_hemoglobina',
+        'fecha_ultimo_examen_hemoglobina',
         'veces_mide_glucosa',
         'tiene_registro_glucosa',
         'puede_medir_glucosa',
@@ -29,7 +30,6 @@ class Paciente extends Model
         'mas_baja_hipoglucemia',
         'administra_hipoglucemia',
         'tiene_convulsiones',
-        'nombres_medico',
         'fecha_ultima_cita',
         'nombre_hospital',
         'cedula_representante',
@@ -50,7 +50,8 @@ class Paciente extends Model
         'id_insulina_basals',
         'id_insulina_prandials',
         'id_tipo_hospital',
-        'id_ayuda_fundacion'
+        'id_ayuda_fundacion',
+        'id_medico'
     ];
 
     //Relación 1 - N (inversa)
@@ -82,5 +83,10 @@ class Paciente extends Model
     public function ayudas_fundacion()
     {
         return $this->belongsTo('App\AyudaFundacion');
+    }
+
+    public function medico()
+    {
+        return $this->belongsTo('App\Medico');
     }
 }

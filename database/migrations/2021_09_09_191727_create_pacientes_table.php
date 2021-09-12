@@ -25,17 +25,17 @@ class CreatePacientesTable extends Migration
             $table->string('celular', 15)->nullable();
             $table->string('telefono_convencional', 15)->nullable();
             $table->string('valor_hemoglobina', 10)->nullable();
+            $table->date('fecha_ultimo_examen_hemoglobina')->nullable();
             $table->integer('veces_mide_glucosa')->nullable();
             $table->string('tiene_registro_glucosa', 10)->nullable();
             $table->string('puede_medir_glucosa', 10)->nullable();
-            $table->string('dosis_insulina_basal', 10)->nullable();
-            $table->string('dosis_insulina_prandial', 10)->nullable();
+            $table->string('dosis_insulina_basal', 200)->nullable();
+            $table->string('dosis_insulina_prandial', 200)->nullable();
             $table->string('sintoma_frente_hipoglucemia', 10)->nullable();
             $table->integer('veces_hipoglucemia_menos')->nullable();
             $table->integer('mas_baja_hipoglucemia')->nullable();
             $table->string('administra_hipoglucemia', 120)->nullable();
             $table->string('tiene_convulsiones', 10)->nullable();
-            $table->string('nombres_medico', 75)->nullable();
             $table->date('fecha_ultima_cita')->nullable();
             $table->string('nombre_hospital', 120)->nullable();
             $table->string('cedula_representante', 15)->nullable();
@@ -79,6 +79,11 @@ class CreatePacientesTable extends Migration
             $table->unsignedBigInteger('id_ayuda_fundacion');
             $table->foreign('id_ayuda_fundacion')
                 ->references('id')->on('ayuda_fundacions')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->unsignedBigInteger('id_medico');
+            $table->foreign('id_medico')
+                ->references('id')->on('medicos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

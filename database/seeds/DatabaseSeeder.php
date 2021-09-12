@@ -28,6 +28,62 @@ class DatabaseSeeder extends Seeder
             'tipo_ayuda' => 'Talleres de Capacitación a instituciones educativas / empresas',
         ]);
 
+        //NOMBRES MÉDICOS
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Alexandra Vimos'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Josefa Palacios'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Johanna Acosta'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Karina Iturralde'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Katty Jativa'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Kesia Granela'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Marcela Sevilla'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Mayela Guillén'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dra. Natasha Giler'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Byron Mendoza'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Carlos Ruilova'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. José Guerrero'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Mauricio Pérez'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Miguel Pasquel'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Patricio Prócel'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Pedro Aguilera'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'Dr. Willian Acosta'
+        ]);
+        DB::table('medicos')->insert([
+            'nombres' => 'OTRO'
+        ]);
+
         //TIPOS DIABETES
         DB::table('diabetes')->insert([
             'tipo_diabetes' => 'Diabetes Tipo 1',

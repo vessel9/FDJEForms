@@ -3,9 +3,9 @@
 
 
     <div class="container">
-        <div class="card">
+        <div class="card mb-5">
             {{-- <form id="" action="{{ action('FormularioRegistroController@update', $paciente->id) }}" method="post"> --}}
-            <div class="card-header">Formulario de Registro de la Fundación Diabetes Juvenil del Ecuador
+            <div class="card-header text-white bg-primary">Formulario de Registro de la Fundación Diabetes Juvenil del Ecuador
             </div>
             <div class="card-body">
                 <!-- One "tab" for each step in the form: -->
@@ -14,342 +14,423 @@
                         <div class="card-body">
                           @csrf
                             @method('PATCH')
-                            {{-- <div class="card-header">Formulario de Registro de la Fundación Diabetes Juvenil del Ecuador</div> --}}
+                            <div class="card-header text-white bg-secondary">&nbsp&nbsp&nbsp&nbsp&nbspInformacion Personal</div>
+                            <br>
                             <div class="row">
-                                <div class="col-md-6">
-                                    
-                                    <div class="form-group">
-                                        <label for="nombre">Cedula</label>
-                                        <input type="text" class="form-control" name="cedula" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                            value="{{ $paciente->cedula }}" placeholder="Ingrese su cedula" placeholder="Ingrese su cedula" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nombre">Nombres</label>
-                                        <input type="text" class="form-control" name="nombres" value="{{ $paciente->nombres }}" required>
-                                    </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Tipo de Diabetes:</label>
+                                    <select name="id_diabetes" class="form-control" required>
+                                    <option value="{{ $paciente->id_diabetes }}">{{ $diabetesBD->tipo_diabetes}}
+                                        @foreach ($diabetes as $tipodiabetes)
+                                            <option value="{{ $tipodiabetes->id }}">
+                                                {{ $tipodiabetes->tipo_diabetes }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="apellido">Apellidos</label>
-                                        <input type="text" class="form-control" name="apellidos" value="{{ $paciente->apellidos }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                        <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $paciente->fecha_nacimiento }}" required>
-                                    </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Fecha de Diagnóstico:</label>
+                                    <input type="date" class="form-control" name="fecha_diagnostico_diabetes" 
+                                    value="{{ $paciente->fecha_diagnostico_diabetes }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">email</label>
-                                        <input type="email" class="form-control" name="email" value="{{ $paciente->email }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">lugar_nacimiento</label>
-                                        <input type="text" class="form-control" name="lugar_nacimiento" value="{{ $paciente->lugar_nacimiento }}" required>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Email:</label>
+                                    <input type="email" class="form-control" name="email" 
+                                    value="{{ $paciente->email }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">fecha_diagnostico_diabetes</label>
-                                        <input type="date" class="form-control" name="fecha_diagnostico_diabetes" value="{{ $paciente->fecha_diagnostico_diabetes }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">celular</label>
-                                        <input type="text" class="form-control" name="celular" value="{{ $paciente->celular }}" required
-                                        maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                    </div>
+                        </div>
+                        <div clas="row">
+                            <div class="form-group">
+                                <label for="">¿Qué tipo de información o ayuda requiere?</label>
+                                <select name="id_ayuda_fundacion" class="form-control" required>
+                                <option value="{{ $paciente->id_ayuda_fundacion }}">{{ $ayudaFundacionPacienteBD->tipo_ayuda}}</option>
+                                    @foreach ($ayudaFundacionPaciente as $ayudaFundacion)
+                                        <option value="{{ $ayudaFundacion->id }}">
+                                            {{ $ayudaFundacion->tipo_ayuda }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Nombres:</label>
+                                    <input type="text" class="form-control" name="nombres" 
+                                    value="{{ $paciente->nombres }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">telefono_convencional</label>
-                                        <input type="text" class="form-control" name="telefono_convencional" value="{{ $paciente->telefono_convencional }}" required
-                                        maxlength="9" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">valor_hemoglobina</label>
-                                        <input type="text" class="form-control" name="valor_hemoglobina" value="{{ $paciente->valor_hemoglobina }}" required>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Apellidos:</label>
+                                    <input type="text" class="form-control" name="apellidos" 
+                                    value="{{ $paciente->apellidos }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">veces_mide_glucosa</label>
-                                        <input type="text" class="form-control" name="veces_mide_glucosa" value="{{ $paciente->veces_mide_glucosa }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">tiene_registro_glucosa</label>
-                                        <input type="text" class="form-control" name="tiene_registro_glucosa" value="{{ $paciente->tiene_registro_glucosa }}" required>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Cédula/Pasaporte:</label>
+                                    <input type="number" class="form-control" name="cedula" required maxlength="10" 
+                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                    value="{{ $paciente->cedula }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">puede_medir_glucosa</label>
-                                        <input type="text" class="form-control" name="puede_medir_glucosa" value="{{ $paciente->puede_medir_glucosa }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">dosis_insulina_basal</label>
-                                        <input type="text" class="form-control" name="dosis_insulina_basal" value="{{ $paciente->dosis_insulina_basal }}" required>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Lugar de Nacimiento:</label>
+                                    <input type="text" class="form-control" name="lugar_nacimiento" 
+                                    value="{{ $paciente->lugar_nacimiento }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">dosis_insulina_prandial</label>
-                                        <input type="text" class="form-control" name="dosis_insulina_prandial" value="{{ $paciente->dosis_insulina_prandial }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">sintoma_frente_hipoglucemia</label>
-                                        <input type="text" class="form-control" name="sintoma_frente_hipoglucemia" value="{{ $paciente->sintoma_frente_hipoglucemia }}" required>
-                                    </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Provincia:</label>
+                                    <select name="id_provincia" id="provincia" class="form-control" required>
+                                        <option value="{{ $provinciaBD->id }}">{{ $provinciaBD->nombre}}</option>
+                                        @foreach ($provincias as $provincia)
+                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">veces_hipoglucemia_menos</label>
-                                        <input type="text" class="form-control" name="veces_hipoglucemia_menos" value="{{ $paciente->veces_hipoglucemia_menos }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">mas_baja_hipoglucemia</label>
-                                        <input type="text" class="form-control" name="mas_baja_hipoglucemia" value="{{ $paciente->mas_baja_hipoglucemia }}" required>
-                                    </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Ciudad:</label>
+                                    <select name="id_ciudad" id="ciudad" class="form-control" required>
+                                        <option value="{{ $paciente->id_ciudad }}">{{ $ciudadBD->nombre_ciudad}}
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">administra_hipoglucemia</label>
-                                        <input type="text" class="form-control" name="administra_hipoglucemia" value="{{ $paciente->administra_hipoglucemia }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">tiene_convulsiones</label>
-                                        <input type="text" class="form-control" name="tiene_convulsiones" value="{{ $paciente->tiene_convulsiones }}" required>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Celular:</label>
+                                    <input type="number" class="form-control" name="celular" required maxlength="10" 
+                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    value="{{ $paciente->celular }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">nombres_medico</label>
-                                        <input type="text" class="form-control" name="nombres_medico" value="{{ $paciente->nombres_medico }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">fecha_ultima_cita</label>
-                                        <input type="date" class="form-control" name="fecha_ultima_cita" value="{{ $paciente->fecha_ultima_cita }}" required>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Teléfono Convencional:</label>
+                                    <input type="number" class="form-control" name="telefono_convencional" required maxlength="9" 
+                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    value="{{ $paciente->telefono_convencional }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">nombre_hospital</label>
-                                        <input type="text" class="form-control" name="nombre_hospital" value="{{ $paciente->nombre_hospital }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">cedula_representante</label>
-                                        <input type="text" class="form-control" name="cedula_representante" value="{{ $paciente->cedula_representante }}" required
-                                        maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                    </div>
+                        </div>
+                        <div class="card-header text-white bg-secondary">&nbsp&nbsp&nbsp&nbsp&nbspInformacion Diabetes</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Valor del Examen de Hemoglobina Glicosilada (HbA1c) %</label>
+                                    <input type="text" class="form-control" name="valor_hemoglobina" 
+                                    value="{{ $paciente->valor_hemoglobina }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">nombres_representante</label>
-                                        <input type="text" class="form-control" name="nombres_representante" value="{{ $paciente->nombres_representante }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">celular_representante</label>
-                                        <input type="text" class="form-control" name="celular_representante" value="{{ $paciente->celular_representante }}" required
-                                        maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Fecha del Último Examen de Hemoglobina Glicosilada</label>
+                                    <input type="date" class="form-control" name="fecha_ultimo_examen_hemoglobina" 
+                                    value="{{ $paciente->fecha_ultimo_examen_hemoglobina }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">solicita_ayuda_fundacion</label>
-                                        <input type="text" class="form-control" name="solicita_ayuda_fundacion" value="{{ $paciente->solicita_ayuda_fundacion }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">otra_enfermedad</label>
-                                        <input type="text" class="form-control" name="otra_enfermedad" value="{{ $paciente->otra_enfermedad }}" required>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Cuántas veces mide la glucosa en el día?</label>
+                                    <input type="number" class="form-control" name="veces_mide_glucosa" 
+                                    value="{{ $paciente->veces_mide_glucosa }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">cantidad_familia</label>
-                                        <input type="text" class="form-control" name="cantidad_familia" value="{{ $paciente->cantidad_familia }}" required max="20" min="0">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">cantidad_menores_edad</label>
-                                        <input type="text" class="form-control" name="cantidad_menores_edad" value="{{ $paciente->cantidad_menores_edad }}" required max="20" min="0">
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Lleva un registro escrito?</label>
+                                    <select name="tiene_registro_glucosa" class="form-control" required>
+                                        <option value="{{ $paciente->tiene_registro_glucosa }}">{{ $paciente->tiene_registro_glucosa }}</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">algun_discapacitado_familia</label>
-                                        <input type="text" class="form-control" name="algun_discapacitado_familia" value="{{ $paciente->algun_discapacitado_familia }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">zona_vive</label>
-                                        <input type="text" class="form-control" name="zona_vive" value="{{ $paciente->zona_vive }}" required>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Puede medirse la glucosa por sí sólo?:</label>
+                                    <select name="puede_medir_glucosa" class="form-control" required>
+                                        <option value="{{ $paciente->puede_medir_glucosa }}">{{ $paciente->puede_medir_glucosa }}</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">tipo_vivienda</label>
-                                        <input type="text" class="form-control" name="tipo_vivienda" value="{{ $paciente->tipo_vivienda }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">personas_aportan_familia</label>
-                                        <input type="number" class="form-control" name="personas_aportan_familia" value="{{ $paciente->personas_aportan_familia }}" required max="20" min="0">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">situacion_jefe_hogar</label>
-                                        <input type="text" class="form-control" name="situacion_jefe_hogar" value="{{ $paciente->situacion_jefe_hogar }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">problemas_diabetes</label>
-                                        <input type="text" class="form-control" name="problemas_diabetes" value="{{ $paciente->problemas_diabetes }}" required>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nombre de la Insulina Basal que utiliza:</label>
+                                    <select name="id_insulina_basals" class="form-control" required>
+                                        <option value="{{ $paciente->id_insulina_basals }}">{{ $insulinaBasalPacienteBD->nombre}}</option>
+                                        @foreach ($insulinaBasalPaciente as $insulinaBasal)
+                                            <option value="{{ $insulinaBasal->id }}">{{ $insulinaBasal->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_ciudad</label>
-                                        <select class="form-control" name="id_ciudad" required>
-                                            <option value="{{ $paciente->id_ciudad }}">{{ $ciudadBD->nombre_ciudad}}</option>
-                                            @foreach($ciudades as $ciudad)
-                                                <option value="{{ $ciudad->id }}">{{ $ciudad->nombre_ciudad }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_diabetes</label>
-                                        <select class="form-control" name="id_diabetes" required>
-                                            <option value="{{ $paciente->id_diabetes }}">{{ $diabetesBD->tipo_diabetes}}</option>
-                                            @foreach($diabetes as $diab)
-                                                <option value="{{ $diab->id }}">{{ $diab->tipo_diabetes }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>                            
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_insulina_basals</label>
-                                        <select class="form-control" name="id_insulina_basals" required>
-                                            <option value="{{ $paciente->id_insulina_basals }}">{{ $insulinaBasalPacienteBD->nombre}}</option>
-                                            @foreach($insulinaBasalPaciente as $insulina_basal)
-                                                <option value="{{ $insulina_basal->id }}">{{ $insulina_basal->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_insulina_prandials</label>
-                                        <select class="form-control" name="id_insulina_prandials" required>
-                                            <option value="{{ $paciente->id_insulina_prandials }}">{{ $insulinaPrandialPacienteBD->nombre}}</option>
-                                            @foreach($insulinaPrandialPaciente as $insulina_prandial)
-                                                <option value="{{ $insulina_prandial->id }}">{{ $insulina_prandial->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Dosis de Insulina basal(Ejemplo: mañana = 5 u. / tarde = 4 u.)</label>
+                                    <input type="text" class="form-control" name="dosis_insulina_basal" 
+                                    value="{{ $paciente->dosis_insulina_basal }}" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_tipo_hospital</label>
-                                        <select class="form-control" name="id_tipo_hospital" required>
-                                            <option value="{{ $paciente->id_tipo_hospital }}">{{ $tipoHospitalPacienteBD->tipo_hospital}}</option>
-                                            @foreach($tipoHospitalPaciente as $tipo_hospital)
-                                                <option value="{{ $tipo_hospital->id }}">{{ $tipo_hospital->tipo_hospital }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="telefono">id_ayuda_fundacion</label>
-                                        <select class="form-control" name="id_ayuda_fundacion" required>
-                                            <option value="{{ $paciente->id_ayuda_fundacion }}">{{ $ayudaFundacionPacienteBD->tipo_ayuda}}</option>
-                                            @foreach($ayudaFundacionPaciente as $ayuda_fundacion)
-                                                <option value="{{ $ayuda_fundacion->id }}">{{ $ayuda_fundacion->tipo_ayuda }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>          
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-success" type="submit">Enviar</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nombre de la Insulina prandial /bolus que utiliza (insulina rápida)</label>
+                                    <select name="id_insulina_prandials" class="form-control" required>
+                                        <option value="{{ $paciente->id_insulina_prandials }}">{{ $insulinaPrandialPacienteBD->nombre}}</option>
+                                        @foreach ($insulinaPrandialPaciente as $insulinaPrandial)
+                                            <option value="{{ $insulinaPrandial->id }}">
+                                                {{ $insulinaPrandial->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Dosis de Insulina rápida (Ejemplo: desayuno = 4 u. / almuerzo= 3 u. / cena=3u. )</label>
+                                    <input type="text" class="form-control" name="dosis_insulina_prandial" 
+                                    value="{{ $paciente->dosis_insulina_prandial }}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Presenta síntomas frente a una hipoglucemía?</label>
+                                    <select name="sintoma_frente_hipoglucemia" class="form-control" required>
+                                        <option value="{{ $paciente->sintoma_frente_hipoglucemia }}">{{ $paciente->sintoma_frente_hipoglucemia }}</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Cuántas hipoglucemias tuvo la pasada semana?</label>
+                                    <input type="number" class="form-control" name="veces_hipoglucemia_menos" 
+                                    value="{{ $paciente->veces_hipoglucemia_menos }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Cuál fue número más bajo de hipoglucemia?</label>
+                                    <input type="text" class="form-control" name="mas_baja_hipoglucemia" 
+                                    value="{{ $paciente->mas_baja_hipoglucemia }}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Cuándo tiene hipoglucemias qué suele hacer/administrar?</label>
+                                    <input type="text" class="form-control" name="administra_hipoglucemia" 
+                                    value="{{ $paciente->administra_hipoglucemia }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Ha convulsionado alguna vez en su vida?</label>
+                                    <select name="tiene_convulsiones" class="form-control" required>
+                                        <option value="{{ $paciente->tiene_convulsiones }}">{{ $paciente->tiene_convulsiones }}</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-white bg-secondary">&nbsp&nbsp&nbsp&nbsp&nbspInformacion Medica</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Nombre del Médico especialista en diabetes</label>
+                                    <select name="id_medico" class="form-control" required>
+                                        <option value="{{ $paciente->id_medico }}">{{ $medicoBD->nombres}}</option>
+                                        @foreach ($medicos as $medico)
+                                            <option value="{{ $medico->id }}">{{ $medico->nombres }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Fecha de la última visita al médico especialista</label>
+                                    <input type="date" class="form-control" name="fecha_ultima_cita" 
+                                    value="{{ $paciente->fecha_ultima_cita }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">¿Alguna otra enfermedad a parte de la diabetes?</label>
+                                    <input type="text" class="form-control" name="otra_enfermedad" 
+                                    value="{{ $paciente->otra_enfermedad }}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Hospital o Clínica donde se atiende?</label>
+                                    <input type="text" class="form-control" name="nombre_hospital" 
+                                    value="{{ $paciente->nombre_hospital }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿El Hospital donde se hace atender es?</label>
+                                    <select name="id_tipo_hospital" class="form-control" required>
+                                        <option value="{{ $paciente->id_tipo_hospital }}">{{ $tipoHospitalPacienteBD->tipo_hospital}}</option>
+                                        @foreach ($tipoHospitalPaciente as $tipoHospital)
+                                            <option value="{{ $tipoHospital->id }}">
+                                                {{ $tipoHospital->tipo_hospital }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-white bg-secondary">&nbsp&nbsp&nbsp&nbsp&nbspInformacion Representante legal</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Célula/Pasaporte del Representante:</label>
+                                    <input type="number" class="form-control" name="cedula_representante" required maxlength="10" 
+                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    value="{{ $paciente->cedula_representante }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nombre y Apellido del Representante:</label>
+                                    <input type="text" class="form-control" name="nombres_representante" 
+                                    value="{{ $paciente->nombres_representante }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Teléfono de contacto:</label>
+                                    <input type="number" class="form-control" name="celular_representante" required maxlength="10" 
+                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    value="{{ $paciente->celular_representante }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Desea solicitar ayuda para insumos/insulinas?</label>
+                                    <select name="solicita_ayuda_fundacion" class="form-control" required>
+                                        <option value="{{ $paciente->solicita_ayuda_fundacion }}">{{ $paciente->solicita_ayuda_fundacion }}</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-white bg-secondary">&nbsp&nbsp&nbsp&nbsp&nbspInformacion Social</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Cuántas personas conforman su familia?</label>
+                                    <input type="number" class="form-control" name="cantidad_familia" required max="20" min="0"
+                                    value="{{ $paciente->cantidad_familia }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Cuántos personas de su familia son menores de edad?</label>
+                                    <input type="number" class="form-control" name="cantidad_menores_edad" required max="20" min="0"
+                                    value="{{ $paciente->cantidad_menores_edad }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Alguien es su familia presenta algún tipo de discapacidad? Cuál?</label>
+                                    <input type="text" class="form-control" name="algun_discapacitado_familia" 
+                                    value="{{ $paciente->algun_discapacitado_familia }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿En qué zona vive usted?</label>
+                                    <select name="zona_vive" class="form-control" required>
+                                        <option value="{{ $paciente->zona_vive }}">{{ $paciente->zona_vive }}</option>
+                                        <option value="ZONA RURAL">ZONA RURAL</option>
+                                        <option value="ZONA URBANA">ZONA URBANA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿El lugar donde usted vive es?</label>
+                                    <select name="tipo_vivienda" class="form-control" required>
+                                        <option value="{{ $paciente->tipo_vivienda }}">{{ $paciente->tipo_vivienda }}</option>
+                                        <option value="PROPIA">PROPIA</option>
+                                        <option value="ARRENADA">ARRENDADA</option>
+                                        <option value="OTROS">OTROS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Cuántas personas aportan económicamente en su familia?</label>
+                                    <input type="number" class="form-control" name="personas_aportan_familia" required max="20" min="0"
+                                    value="{{ $paciente->personas_aportan_familia }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿El Jefe de hogar actualmente es?</label>
+                                    <input type="text" class="form-control" name="situacion_jefe_hogar" 
+                                    value="{{ $paciente->situacion_jefe_hogar }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">¿Cuál es su principal problema para un buen cuidado de la diabetes?</label>
+                                    <input type="text" class="form-control" name="problemas_diabetes" 
+                                    value="{{ $paciente->problemas_diabetes }}" required>
+                                </div>
+                            </div>
+                        </div>          
+                        <div class="row justify-content-center">
+                            <div class="col-md-1">
+                                <a href="{{ url('/home') }}" class="btn btn-info" role="button">Atras</a>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success w-100" type="submit">Enviar</button>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </form>
@@ -357,3 +438,33 @@
         </div>
     </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#provincia').change(function(){
+            $provincia_id = $(this).val();
+            if($provincia_id)
+            {
+                var div=$(this).parent();
+                var op=" "
+                $.ajax({
+                    url:"{!!URL::to('buscarCiudad')!!}",
+                    method:"GET",
+                    data:{'id':$provincia_id},
+                    success:function(data)
+                    {
+                        op += '<option value="" selected>Elige una Ciudad</option>';
+                        for(var i = 0; i < data.length ; i++){
+                            op += '<option value="'+data[i].id+'">'+data[i].nombre_ciudad+'</option>';
+                        }
+                        $('select#ciudad').html(" ");
+                        $('select#ciudad').append(op);
+                    }, 
+                    error:function(err) {
+                        console.error(err);
+                    }
+                });
+            }
+        });
+    });
+</script>

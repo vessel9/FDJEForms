@@ -20,9 +20,9 @@
   <table class="table table-striped">
   <thead>
     <tr> 
-      <th scope="col">Opciones</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col" style="width: 13%">Opciones</th>
+      <th scope="col"  style="width: 10%"></th>
+      <th scope="col"  style="width: 10%"></th>
       <th scope="col">Cedula</th>
       <th scope="col">Nombres</th>
       <th scope="col">Apellidos</th>
@@ -33,7 +33,7 @@
     <tr>
       {{-- <td><a class="btn btn-warning" href="{{ url('editarformulario/'.$paciente->id) }}">Editar paciente</a></td> --}}
       {{-- <td><a class="btn btn-warning" href="{{ route('formulario.edit', $paciente->id) }}">Editar paciente</a></td> --}}
-      <td><a class="btn btn-primary" href="{{ route('formulario.show', $paciente->id) }}">Ver paciente</a></td>
+      <td><a class="btn btn-warning" href="{{ route('formulario.show', $paciente->id) }}">Ver paciente</a></td>
       <td><a href="{{ route('formulario.edit', $paciente->id)}}" class="btn btn-primary">Editar</a></td>
       <td>
         <form action="{{ route('formulario.destroy', $paciente->id)}}" method="post">

@@ -15547,12 +15547,6 @@ a.text-dark:focus {
   }
 }
 
-body {
-  background: #E2EDFE;
-  background: -webkit-linear-gradient(to right, #E2EDFE, #C5D8F7);
-  background: linear-gradient(to right, #E2EDFE, #C5D8F7);
-  min-height: 100vh;
-}
 
 #button-addon1 {
   color: #ffc371;
@@ -15600,3 +15594,15 @@ footer {
   position: fixed;
   bottom: 0;              /* NUEVO */
 }
+
+.app{
+  background-color: #000;
+}
+
+body {
+  background: #E2EDFE;
+  background: -webkit-linear-gradient(to right, #E2EDFE, #C5D8F7);
+  background: linear-gradient(to right, #E2EDFE, #C5D8F7);
+  min-height: 100vh;
+}
+
