@@ -42,7 +42,7 @@ class CreatePacientesTable extends Migration
             $table->string('nombres_representante', 75)->nullable();
             $table->string('celular_representante', 15)->nullable();
             $table->string('solicita_ayuda_fundacion', 10)->nullable();
-            $table->string('otra_enfermedad', 10)->nullable();
+            $table->string('otra_enfermedad', 100)->nullable();
             $table->integer('cantidad_familia')->nullable();
             $table->integer('cantidad_menores_edad')->nullable();
             $table->string('algun_discapacitado_familia', 50)->nullable();

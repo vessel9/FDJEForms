@@ -89,7 +89,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Cédula/Pasaporte:</label>
-                                    <input type="number" class="form-control" name="cedula" required maxlength="10"
+                                    <input type="text" class="form-control" name="cedula" required maxlength="10"
                                         oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                         value="{{ $paciente->cedula }}" required>
                                     @if ($errors->has('cedula'))
@@ -152,7 +152,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Valor del Examen de Hemoglobina Glicosilada (HbA1c) %</label>
-                                    <input type="text" class="form-control" name="valor_hemoglobina"
+                                    <input type="text" class="form-control" name="valor_hemoglobina"maxlength="10"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
                                         value="{{ $paciente->valor_hemoglobina }}" required>
                                 </div>
                             </div>
@@ -264,7 +265,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">¿Cuál fue número más bajo de hipoglucemia?</label>
-                                    <input type="text" class="form-control" name="mas_baja_hipoglucemia"
+                                    <input type="number" class="form-control" name="mas_baja_hipoglucemia"
                                         value="{{ $paciente->mas_baja_hipoglucemia }}" required>
                                 </div>
                             </div>
@@ -349,7 +350,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Célula/Pasaporte del Representante:</label>
-                                    <input type="number" class="form-control" name="cedula_representante" required
+                                    <input type="text" class="form-control" name="cedula_representante" required
                                         maxlength="10"
                                         oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                         value="{{ $paciente->cedula_representante }}" required>

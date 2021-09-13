@@ -171,6 +171,9 @@ class DatabaseSeeder extends Seeder
         DB::table('provincias')->insert([
             'nombre' => 'SANTA ELENA',
         ]);
+        DB::table('provincias')->insert([
+            'nombre' => 'EXTERIOR',
+        ]);
 
         //AZUAY id = 1
         DB::table('ciudads')->insert([
@@ -1102,6 +1105,11 @@ class DatabaseSeeder extends Seeder
         DB::table('ciudads')->insert([
             'nombre_ciudad' => 'SALINAS',
             'id_provincia' => 24
+        ]);
+        //FUERA ECUADOR id=25
+        DB::table('ciudads')->insert([
+            'nombre_ciudad' => 'FUERA DE ECUADOR',
+            'id_provincia' => 25
         ]);
 
         //INSULINA BASAL
