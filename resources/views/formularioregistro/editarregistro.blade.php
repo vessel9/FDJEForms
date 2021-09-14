@@ -170,7 +170,8 @@
                                 <div class="form-group">
                                     <label for="">¿Cuántas veces mide la glucosa en el día?</label>
                                     <input type="number" class="form-control" name="veces_mide_glucosa"
-                                        value="{{ $paciente->veces_mide_glucosa }}" required>
+                                        value="{{ $paciente->veces_mide_glucosa }}" required maxlength="4"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -259,14 +260,16 @@
                                 <div class="form-group">
                                     <label for="">¿Cuántas hipoglucemias tuvo la pasada semana?</label>
                                     <input type="number" class="form-control" name="veces_hipoglucemia_menos"
-                                        value="{{ $paciente->veces_hipoglucemia_menos }}" required>
+                                        value="{{ $paciente->veces_hipoglucemia_menos }}" required maxlength="4"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">¿Cuál fue número más bajo de hipoglucemia?</label>
                                     <input type="number" class="form-control" name="mas_baja_hipoglucemia"
-                                        value="{{ $paciente->mas_baja_hipoglucemia }}" required>
+                                        value="{{ $paciente->mas_baja_hipoglucemia }}" required maxlength="4"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                         </div>
@@ -275,7 +278,8 @@
                                 <div class="form-group">
                                     <label for="">¿Cuándo tiene hipoglucemias qué suele hacer/administrar?</label>
                                     <input type="text" class="form-control" name="administra_hipoglucemia"
-                                        value="{{ $paciente->administra_hipoglucemia }}" required>
+                                        value="{{ $paciente->administra_hipoglucemia }}" required maxlength="119"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -391,15 +395,17 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">¿Cuántas personas conforman su familia?</label>
-                                    <input type="number" class="form-control" name="cantidad_familia" required max="20"
-                                        min="0" value="{{ $paciente->cantidad_familia }}">
+                                    <input type="number" class="form-control" name="cantidad_familia" required max="99"
+                                        min="0" value="{{ $paciente->cantidad_familia }}" maxlength="2"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">¿Cuántos personas de su familia son menores de edad?</label>
                                     <input type="number" class="form-control" name="cantidad_menores_edad" required
-                                        max="20" min="0" value="{{ $paciente->cantidad_menores_edad }}">
+                                        max="99" min="0" value="{{ $paciente->cantidad_menores_edad }}" maxlength="2"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                         </div>
@@ -440,7 +446,8 @@
                                 <div class="form-group">
                                     <label for="">¿Cuántas personas aportan económicamente en su familia?</label>
                                     <input type="number" class="form-control" name="personas_aportan_familia" required
-                                        max="20" min="0" value="{{ $paciente->personas_aportan_familia }}">
+                                        max="99" min="0" value="{{ $paciente->personas_aportan_familia }}" maxlength="2"
+                                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                         </div>
