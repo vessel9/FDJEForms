@@ -86,6 +86,16 @@ class CreatePacientesTable extends Migration
                 ->references('id')->on('medicos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->unsignedBigInteger('id_problema_diabetes');
+            $table->foreign('id_problema_diabetes')
+                ->references('id')->on('problema_diabetes')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->unsignedBigInteger('id_situacion_jefe_hogar');
+            $table->foreign('id_situacion_jefe_hogar')
+                ->references('id')->on('situacion_jefe_hogars')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

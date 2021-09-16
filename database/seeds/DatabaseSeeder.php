@@ -14,6 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Usuario Administrador
+        DB::table('users')->insert([
+            'name' => 'Administrador',
+            'email' => 'admin.formulario@fundacion.org',
+            'email_verified_at' => NULL,
+            'password' => '$2y$10$grVLsyJtPp/8zN3xF7NojuV8lzyt2RLa2OebRtVNTF1F/eavYlvoa'
+        ]);
+
         //AYUDAS FUNDACIONES
         DB::table('ayuda_fundacions')->insert([
             'tipo_ayuda' => 'Educación en diabetes',
@@ -1162,7 +1170,8 @@ class DatabaseSeeder extends Seeder
         DB::table('tipo_hospitals')->insert([
             'tipo_hospital' => 'OTROS'
         ]);
-/*
+
+
         //PROBLEMA DIABETES
         DB::table('problema_diabetes')->insert([
             'problema' => 'Conocimiento'
@@ -1181,7 +1190,50 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('problema_diabetes')->insert([
             'problema' => 'Poco tiempo para el cuidado de los niños'
-        ]); */
+        ]);
+
+        //PROBLEMA DIABETES
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Conocimiento'
+        ]);
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Conducta/actitud'
+        ]);
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Actividad física'
+        ]);
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Recursos económicos'
+        ]);
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Problemas familiares'
+        ]);
+        DB::table('problema_diabetes')->insert([
+            'problema' => 'Poco tiempo para el cuidado de los niños'
+        ]);
+
+        //SITUACION JEFE DE HOGAR
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Empleado público'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Empleado privado'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Negocio Propio'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Comerciante informal'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Jubilado /Montepio'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'Trabajo por obra'
+        ]);
+        DB::table('situacion_jefe_hogars')->insert([
+            'situacion' => 'desempleado'
+        ]);
 
 
         //PACIENTES
@@ -1220,8 +1272,8 @@ class DatabaseSeeder extends Seeder
             'zona_vive' => 'RURAL',
             'tipo_vivienda' => 'ARRENDADA',
             'personas_aportan_familia' => '2',
-            'situacion_jefe_hogar' => 'Empleado',
-            'problemas_diabetes' => 'Ninguno',
+            'id_situacion_jefe_hogar' => 'Empleado',
+            'id_problemas_diabetes' => 'Ninguno',
             'id_ciudad' => 1,
             'id_diabetes' => 1,
             'id_insulina_basals' => 1,

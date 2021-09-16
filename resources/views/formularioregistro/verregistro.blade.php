@@ -272,13 +272,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>¿El Jefe de hogar actualmente es?:</strong>
-                    {{ $paciente->situacion_jefe_hogar }}
+                    {{ $situacionJefeHogarBD->situacion }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>¿Cuál es su principal problema para un buen cuidado de la diabetes?:</strong>
-                    {{ $paciente->problemas_diabetes }}
+                    {{ $problemaDiabetesBD->problema }}
                 </div>
             </div>
             </div>

@@ -95,11 +95,18 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Lugar de Nacimiento:</label>
                                         <input type="text" class="form-control" name="lugar_nacimiento"
                                             value="{{old('lugar_nacimiento')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Fecha de Nacimiento:</label>
+                                        <input type="date" class="form-control" name="fecha_nacimiento"
+                                            value="{{old('fecha_nacimiento')}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -440,24 +447,36 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">¿El Jefe de hogar actualmente es?</label>
-                                        <input type="text" class="form-control" name="situacion_jefe_hogar" 
-                                            value="{{old('situacion_jefe_hogar')}}" required>
+                                        <select name="id_situacion_jefe_hogar" class="form-control" required>
+                                            <option value="{{old('id_situacion_jefe_hogar')}}">Seleccione una opción</option>
+                                            @foreach ($situacionJefeHogars as $jefeHogar)
+                                            <option value="{{ $jefeHogar->id }}">
+                                                {{ $jefeHogar->situacion }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">¿Cuál es su principal problema para un buen cuidado de la
                                             diabetes?</label>
-                                        <input type="text" class="form-control" name="problemas_diabetes" 
-                                            value="{{old('problemas_diabetes')}}" required>
+                                        <select name="id_problema_diabetes" class="form-control" required>
+                                            <option value="{{old('id_problema_diabetes')}}">Seleccione una opción</option>
+                                            @foreach ($problemaDiabetes as $problema)
+                                            <option value="{{ $problema->id }}">
+                                                {{ $problema->problema }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-md-1">
+                                <div class="col-md-1 col-sm-1 col-4">
                                     <a href="{{ url('/home') }}" class="btn btn-info" role="button">Atras</a>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-sm-3 col-6">
                                     <button class="btn btn-success w-100" type="submit">Enviar</button>
                                 </div>
                             </div>

@@ -12,6 +12,8 @@ use App\InsulinaPrandial;
 use App\TipoHospital;
 use App\AyudaFundacion;
 use App\Medico;
+use App\ProblemaDiabetes;
+use App\SituacionJefeHogar;
 use Illuminate\Validation\Rule;
 
 class FormularioRegistroController extends Controller
@@ -49,6 +51,8 @@ class FormularioRegistroController extends Controller
         $insulinaPrandialPaciente = InsulinaPrandial::all();
         $tipoHospitalPaciente = TipoHospital::all();
         $ayudaFundacionPaciente = AyudaFundacion::all();
+        $situacionJefeHogars = SituacionJefeHogar::all();
+        $problemaDiabetes = ProblemaDiabetes::all();
         $provincias = Provincia::orderBy('nombre', 'ASC')->get();
         $medicos = Medico::all();
         return view('formularioregistro.crearregistro', compact(
@@ -59,7 +63,9 @@ class FormularioRegistroController extends Controller
             'tipoHospitalPaciente',
             'ayudaFundacionPaciente',
             'provincias',
-            'medicos'
+            'medicos',
+            'situacionJefeHogars',
+            'problemaDiabetes'
         ));
     }
 
@@ -120,8 +126,6 @@ class FormularioRegistroController extends Controller
         $paciente->zona_vive = $request->zona_vive;
         $paciente->tipo_vivienda = $request->tipo_vivienda;
         $paciente->personas_aportan_familia = $request->personas_aportan_familia;
-        $paciente->situacion_jefe_hogar = $request->situacion_jefe_hogar;
-        $paciente->problemas_diabetes = $request->problemas_diabetes;
         $paciente->id_ciudad = $request->id_ciudad;
         $paciente->id_diabetes = $request->id_diabetes;
         $paciente->id_insulina_basals = $request->id_insulina_basals;
@@ -129,6 +133,8 @@ class FormularioRegistroController extends Controller
         $paciente->id_tipo_hospital = $request->id_tipo_hospital;
         $paciente->id_ayuda_fundacion = $request->id_ayuda_fundacion;
         $paciente->id_medico = $request->id_medico;
+        $paciente->id_situacion_jefe_hogar = $request->id_situacion_jefe_hogar;
+        $paciente->id_problema_diabetes = $request->id_problema_diabetes;
         $paciente->save();
         
         return redirect('/home');
@@ -157,8 +163,13 @@ class FormularioRegistroController extends Controller
         $tipoHospitalPacienteBD = TipoHospital::find($paciente->id_tipo_hospital);
         $ayudaFundacionPaciente = AyudaFundacion::all();
         $ayudaFundacionPacienteBD = AyudaFundacion::find($paciente->id_ayuda_fundacion);
+        $situacionJefeHogars = SituacionJefeHogar::all();
+        $situacionJefeHogar = SituacionJefeHogar::all();
+        $situacionJefeHogarBD = SituacionJefeHogar::find($paciente->id_situacion_jefe_hogar);
         $medicos = Medico::all();
         $medicoBD = Medico::find($paciente->id_medico);
+        $problemaDiabetes = ProblemaDiabetes::all();
+        $problemaDiabetesBD = ProblemaDiabetes::find($paciente->id_problema_diabetes);
         return view('formularioregistro.verregistro', compact(
             'paciente',
             'ciudades',
@@ -174,9 +185,15 @@ class FormularioRegistroController extends Controller
             'insulinaBasalPacienteBD',
             'insulinaPrandialPacienteBD',
             'tipoHospitalPacienteBD',
+            'situacionJefeHogars',
+            'situacionJefeHogar',
+            'situacionJefeHogarBD',
             'ayudaFundacionPacienteBD',
+            'situacionJefeHogars',
             'medicos',
             'medicoBD',
+            'problemaDiabetes',
+            'problemaDiabetesBD'
         ));
     }
 
@@ -205,6 +222,10 @@ class FormularioRegistroController extends Controller
         $ayudaFundacionPacienteBD = AyudaFundacion::find($paciente->id_ayuda_fundacion);
         $medicos = Medico::all();
         $medicoBD = Medico::find($paciente->id_medico);
+        $situacionJefeHogar = SituacionJefeHogar::all();
+        $situacionJefeHogarBD = SituacionJefeHogar::find($paciente->id_situacion_jefe_hogar);
+        $problemaDiabetes = ProblemaDiabetes::all();
+        $problemaDiabetesBD = ProblemaDiabetes::find($paciente->id_problema_diabetes);
 
         return view('formularioregistro.editarregistro', compact(
             'paciente',
@@ -224,6 +245,10 @@ class FormularioRegistroController extends Controller
             'provinciaBD',
             'medicos',
             'medicoBD',
+            'situacionJefeHogar',
+            'situacionJefeHogarBD',
+            'problemaDiabetes',
+            'problemaDiabetesBD'
         ));
     }
 
@@ -279,8 +304,6 @@ class FormularioRegistroController extends Controller
         $paciente['zona_vive'] = $request['zona_vive'];
         $paciente['tipo_vivienda'] = $request['tipo_vivienda'];
         $paciente['personas_aportan_familia'] = $request['personas_aportan_familia'];
-        $paciente['situacion_jefe_hogar'] = $request['situacion_jefe_hogar'];
-        $paciente['problemas_diabetes'] = $request['problemas_diabetes'];
         $paciente['id_ciudad'] = $request['id_ciudad'];
         $paciente['id_diabetes'] = $request['id_diabetes'];
         $paciente['id_insulina_basals'] = $request['id_insulina_basals'];
@@ -288,6 +311,8 @@ class FormularioRegistroController extends Controller
         $paciente['id_tipo_hospital'] = $request['id_tipo_hospital'];
         $paciente['id_ayuda_fundacion'] = $request['id_ayuda_fundacion'];
         $paciente['id_medico'] = $request['id_medico'];
+        $paciente['id_situacion_jefe_hogar'] = $request['id_situacion_jefe_hogar'];
+        $paciente['id_problema_diabetes'] = $request['id_problema_diabetes'];
         Paciente::find($id)->update($paciente);
         return redirect('/home');
     }

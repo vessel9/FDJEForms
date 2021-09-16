@@ -62,7 +62,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Salir') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -84,7 +84,7 @@
 <footer>
 <div class=" py-4">
       <div class="container text-center">
-        <p class="text-muted mb-0 py-2">Copyright @2021 | Diseñado por</p>
+        <p class="text-muted mb-0 py-2">Copyright @2021 | Diseñado por "ITSY"</p>
       </div>
     </div>
   </footer>

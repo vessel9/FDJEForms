@@ -43,15 +43,15 @@ class Paciente extends Model
         'zona_vive',
         'tipo_vivienda',
         'personas_aportan_familia',
-        'situacion_jefe_hogar',
-        'problemas_diabetes',
         'id_ciudad',
         'id_diabetes',
         'id_insulina_basals',
         'id_insulina_prandials',
         'id_tipo_hospital',
         'id_ayuda_fundacion',
-        'id_medico'
+        'id_medico',
+        'id_problema_diabetes',
+        'id_situacion_jefe_hogar'
     ];
 
     //Relación 1 - N (inversa)
@@ -88,5 +88,15 @@ class Paciente extends Model
     public function medico()
     {
         return $this->belongsTo('App\Medico');
+    }
+
+    public function problema_diabetes()
+    {
+        return $this->belongsTo('App\ProblemaDiabetes');
+    }
+
+    public function situacion_diabetes()
+    {
+        return $this->belongsTo('App\SituacionJefeHogar');
     }
 }
